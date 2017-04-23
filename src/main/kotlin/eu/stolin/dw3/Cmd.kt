@@ -5,7 +5,7 @@ fun main(args: Array<String>) {
     val input = readLine()!!.split(" ").map { it.toInt() }
     //validate input here
 
-    val tree = Tree(input)
+    val rootNode = Tree.constructTree(input)
 
     println("Enter tree traversal:")
     val alg: Algorithm = AlgorithmFactory.fromString(readLine()!!)
@@ -14,7 +14,7 @@ fun main(args: Array<String>) {
     val opInput: String = readLine()!!
 
     val op: Operation = OperationFactory.fromString(opInput)
-    alg.traverse(tree.treeRoot!!, op)
+    alg.traverse(rootNode!!, op)
 
     println("=" + op.result())
 }

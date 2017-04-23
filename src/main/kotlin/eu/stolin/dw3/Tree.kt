@@ -1,18 +1,15 @@
 package eu.stolin.dw3
 
-import java.util.*
+
+object Tree {
 
 
-class Tree {
-
-    var treeRoot: Node? = null
-
-    constructor(values: List<Int>) {
-        treeRoot = constructTree(values, 0)
+    fun constructTree(values: List<Int>): Node? {
+        return constructTree(values, 0)
     }
 
 
-    fun constructTree(input: List<Int>, index: Int): Node? {
+    private fun constructTree(input: List<Int>, index: Int): Node? {
         if (input.size > index) {
             val value = input[index]
             val node = Node(value)
@@ -22,9 +19,6 @@ class Tree {
         }
         return null
     }
-
-
-
 
 
 }
