@@ -8,14 +8,14 @@ fun main(args: Array<String>) {
     val tree = Tree(input)
 
     println("Enter tree traversal:")
-    val alg: Algorithm = Algorithm.valueOf(readLine()!!)
+    val alg: Algorithm = AlgorithmFactory.fromString(readLine()!!)
 
     println("Enter action:")
     val opInput: String = readLine()!!
 
     val op: Operation = OperationFactory.fromString(opInput)
-    tree.traverse(alg, op)
-    println(op.result())
+    alg.traverse(tree.treeRoot!!, op)
 
+    println(op.result())
 }
 

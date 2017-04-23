@@ -3,8 +3,6 @@ package eu.stolin.dw3
 
 sealed class Operation {
 
-    abstract val stringValue: String
-
     abstract fun apply(node: Node)
 
     abstract fun result(): String
@@ -12,7 +10,6 @@ sealed class Operation {
     class PlusMinus : Operation() {
         var result = 0
         var isPlus = true
-        override val stringValue = "+-"
 
         override fun apply(node: Node) {
             if (isPlus) {
@@ -31,7 +28,6 @@ sealed class Operation {
     class Print : Operation() {
         var list = emptyList<Int>()
 
-        override val stringValue = "print"
         override fun apply(node: Node) {
             list += node.value
         }
