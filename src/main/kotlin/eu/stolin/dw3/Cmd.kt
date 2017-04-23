@@ -16,6 +16,6 @@ fun main(args: Array<String>) {
     val op: Operation = OperationFactory.fromString(opInput)
     alg.traverse(tree.treeRoot!!, op)
 
-    println(op.result())
+    println("=" + op.result())
 }
 
