@@ -3,7 +3,7 @@ package eu.stolin.dw3
 
 sealed class Operation {
 
-    abstract fun apply(node: Node)
+    abstract fun apply(node: Node.ValueNode)
 
     abstract fun result(): String
 
@@ -11,7 +11,7 @@ sealed class Operation {
         var result = 0
         var isPlus = true
 
-        override fun apply(node: Node) {
+        override fun apply(node: Node.ValueNode) {
             if (isPlus) {
                 result += node.value
             } else {
@@ -28,7 +28,7 @@ sealed class Operation {
     abstract class CollectingOperation: Operation() {
         var list = emptyList<Int>()
 
-        override fun apply(node: Node) {
+        override fun apply(node: Node.ValueNode) {
             list += node.value
         }
     }

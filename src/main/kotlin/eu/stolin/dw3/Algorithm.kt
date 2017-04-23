@@ -10,12 +10,10 @@ sealed class Algorithm {
     class DepthAlgorithm: Algorithm() {
 
         override fun traverse(node: Node, op: Operation) {
-            op.apply(node)
-            if(node.left != null) {
-                traverse(node.left!!, op)
-            }
-            if (node.right != null) {
-                traverse(node.right!!, op)
+            if (node is Node.ValueNode) {
+                op.apply(node)
+                traverse(node.left, op)
+                traverse(node.right, op)
             }
         }
     }
@@ -23,16 +21,16 @@ sealed class Algorithm {
     class BreadthAlgorithm: Algorithm() {
 
         override fun traverse(node: Node, op: Operation) {
-            val queue = LinkedList<Node?>()
+            val queue = LinkedList<Node>()
             queue.add(node)
 
             while (!queue.isEmpty()) {
                 val node = queue.remove()
-
-                //operation
-                op.apply(node!!)
-                if (node.left != null) queue.add(node.left)
-                if (node.right != null) queue.add(node.right)
+                if (node is Node.ValueNode) {
+                    op.apply(node)
+                    queue.add(node.left)
+                    queue.add(node.right)
+                }
             }
         }
     }

@@ -14,7 +14,7 @@ fun main(args: Array<String>) {
     val opInput: String = readLine()!!
 
     val op: Operation = OperationFactory.fromString(opInput)
-    alg.traverse(rootNode!!, op)
+    alg.traverse(rootNode, op)
 
     println("=" + op.result())
 }
