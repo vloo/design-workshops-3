@@ -9,7 +9,7 @@ sealed class Operation {
 
     abstract fun result(): String
 
-    class PlusMinus: Operation() {
+    class PlusMinus : Operation() {
         var result = 0
         var isPlus = true
         override val stringValue = "+-"
@@ -28,7 +28,7 @@ sealed class Operation {
         }
     }
 
-    class Print: Operation() {
+    class Print : Operation() {
         var list = emptyList<Int>()
 
         override val stringValue = "print"

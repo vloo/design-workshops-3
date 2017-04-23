@@ -12,12 +12,8 @@ fun main(args: Array<String>) {
 
     println("Enter action:")
     val opInput: String = readLine()!!
-    val op: Operation = when(opInput) {
-        Operation.Print().stringValue -> Operation.Print()
-        Operation.PlusMinus().stringValue -> Operation.PlusMinus()
-        else -> throw IllegalArgumentException(opInput)
-    }
 
+    val op: Operation = OperationFactory.fromString(opInput)
     tree.traverse(alg, op)
     println(op.result())
 
