@@ -25,15 +25,23 @@ sealed class Operation {
         }
     }
 
-    class Print : Operation() {
+    abstract class CollectingOperation: Operation() {
         var list = emptyList<Int>()
 
         override fun apply(node: Node) {
             list += node.value
         }
+    }
 
+    class Print : CollectingOperation() {
         override fun result(): String {
             return list.fold("") { total, next -> total + " " + next }
+        }
+    }
+
+    class PrintReverse: CollectingOperation() {
+        override fun result(): String {
+            return list.reversed().fold("") { total, next -> total + " " + next }
         }
     }
 }

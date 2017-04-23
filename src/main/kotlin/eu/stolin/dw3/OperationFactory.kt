@@ -7,6 +7,7 @@ object OperationFactory {
         return when(name) {
             "print" -> Operation.Print()
             "+-" -> Operation.PlusMinus()
+            "-print" -> Operation.PrintReverse()
             else -> throw IllegalArgumentException("unknown input $name")
         }
     }
